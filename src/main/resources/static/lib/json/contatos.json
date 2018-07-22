@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "nome": "Jonata Hessa",
+        "telefone": "5611-6122",
+        "data": "2012-01-05T17:05:23.000+0000",
+        "operadora": {
+            "id": 2,
+            "nome": "TIM",
+            "precoMinuto": 2
+        }
+    }
+]
