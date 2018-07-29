@@ -10,6 +10,7 @@
 <script src="js/controllers/listaTelefonicaCtrl.js"	type="text/javascript"></script>
 <script src="js/services/contatosAPIService.js" type="text/javascript"></script>
 <script src="js/services/operadorasAPIService.js" type="text/javascript"></script>
+<script src="js/filters/nameFilter.js" type="text/javascript"></script>
 <title>Lista Telefônica</title>
 </head>
 <body ng-controller="listaTelefonicaCtrl">
@@ -37,7 +38,7 @@
 							<td><input type="checkbox" ng-model="contato.selecionado"
 								ng-change="checkChanged(contato)"
 								ng-disabled="checked == limit && !contato.selecionado" /></td>
-							<td>{{contato.nome}}</td>
+							<td>{{contato.nome | name}}</td>
 							<td>{{contato.telefone}}</td>
 							<td>{{contato.operadora.nome}}</td>
 							<td>{{contato.data | date: 'dd/MM/yyyy HH:mm'}}</td>

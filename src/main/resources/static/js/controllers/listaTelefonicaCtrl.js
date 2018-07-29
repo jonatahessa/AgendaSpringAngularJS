@@ -6,13 +6,13 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($s
   $scope.operadoras = [];
 
 
-  var contatos = function() {
+  var listarContatos = function() {
         contatosAPI.getContatos().then(function(response) {
             $scope.contatos = response.data;
         });
     };
 
-  var operadoras = function() {
+  var listarOperadoras = function() {
     operadorasAPI.getOperadoras().then(function(response) {
           $scope.operadoras = response.data;
         });
@@ -23,14 +23,19 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($s
     contatosAPI.saveContato(contato).then(function(response) {
         delete $scope.contato;
         $scope.contatoForm.$setPristine();
-        contatos();
+        listarContatos();
       });
   };
 
   $scope.apagarContatos = function (contatos) {
-      contatosAPI.deleteContatos(contatos).then(function(response) {
-          contatos();
+	  let sendList = contatos.filter(function (contato) {
+		 if (contato.selecionado) {
+			 return contato;
+		 };
       });
+	  contatosAPI.deleteContatos(sendList).then(function(response) {
+          return listarContatos();
+	  });
   };
 
   $scope.isContatoSelecionado = function (contatos) {
@@ -50,6 +55,6 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($s
       $scope.checked--;
     }
   }
-  contatos();
-  operadoras();
+  listarContatos();
+  listarOperadoras();
 });

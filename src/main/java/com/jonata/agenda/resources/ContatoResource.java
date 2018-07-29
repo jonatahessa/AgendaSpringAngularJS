@@ -34,7 +34,7 @@ public class ContatoResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(value = "/deletar", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/deletar", method = RequestMethod.POST)
 	public void delete(@RequestBody List<Contato> contatos) {
 		for (Contato c : contatos) {
 			service.delete(c);

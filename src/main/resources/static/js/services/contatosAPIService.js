@@ -8,7 +8,7 @@ angular.module("listaTelefonica").factory("contatosAPI", function ($http) {
 	};
 	
 	var _deleteContatos = function (contatos) {
-		return $http.delete("contatos/deletar", contatos);
+		return $http.post("contatos/deletar", contatos);
 	}
 	
 	return {
